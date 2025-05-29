@@ -18,5 +18,5 @@
         window.location.href = "login.html";
     } else {
         document.getElementById("userName").textContent = `Hi, ${userName}`;
-    }
+    }jklghlgjlkhjk
    }
