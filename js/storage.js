@@ -56,11 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
             `
                 <h3>${listing.name}</h3>
                 <p>${listing.d}</p>
-                <img src="${/***listing picture url add later***/}" alt="${listing.name}"/> 
+                <img src="${listing.rooms}" alt="${listing.name}"/> 
                 <p>Price: ${listing.price}</p>
                 <p>Score: ${listing.score}</p>
                 <p>Rooms: ${listing.rooms}</p>
-                <a href="${/***listing url add later***/}" class="btn">View Listings</a>
+                <a href="${listing.rooms}" class="btn">View Listings</a>
                 <button class="btn" onclick="addToFavorites(${listing.listing_id})">Add to favorites</button>
             `;
 
