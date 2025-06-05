@@ -48,3 +48,85 @@
     background-color: var(--primary-color-hover); 
     color:var(--primary-color); 
   }
+
+
+  /* סגנון כללי */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+main {
+  padding: 2rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* כרטיס הזמנה */
+.booking-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: scale(1.01);
+}
+
+.booking-card img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.booking-card div {
+  padding: 1rem;
+  flex: 1;
+}
+
+.booking-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.booking-card p {
+  margin: 0.25rem 0;
+}
+
+.booking-card button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.booking-card button:hover {
+  background-color: #c0392b;
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+  .booking-card {
+    flex-direction: column;
+  }
+
+  .booking-card img {
+    width: 100%;
+    height: 200px;
+  }
+}

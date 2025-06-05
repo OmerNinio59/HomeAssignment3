@@ -1,5 +1,45 @@
-// פונקציות כלליות לעבודה עם localStorage
+document.addEventListener("DOMContentLoaded", function () {
+  const currentUser = localStorage.getItem("currentUser");
 
+  // אם המשתמש לא מחובר – להפנות ל-login (בכל דף פרט ל-login/register)
+  const isLoginPage = location.href.includes("login") || location.href.includes("register");
+  if (!currentUser && !isLoginPage) {
+    window.location.href = "login.html";
+    return;
+  }
+
+// כפתור התנתקות, הפנייה ללוגין במידה ולא מחובר
+   function signOut() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+   }
+
+  // הצגת שם המשתמש המחובר
+  const userNameElement = document.getElementById("userName");
+  if (userNameElement && currentUser) {
+    userNameElement.textContent = `Hi, ${currentUser}`;
+  }
+
+  // טיפול בלחיצה על Sign Out
+  const signOutBtn = document.getElementById("signOut");
+  if (signOutBtn) {
+    signOutBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    });
+  }
+});
+
+   window.onload = function () {
+    const userName = localStorage.getItem("currentUser");
+    if (!userName) {
+        window.location.href = "login.html";
+    } else {
+        document.getElementById("userName").textContent = `Hi, ${userName}`;
+    }
+   }
+   
 
 // הצגת דירות עם כפתור FILTER
   function displayListings(listings) {
@@ -7,12 +47,12 @@
     container.innerHTML = "";
 
     if (listings.length === 0) {
-        container.innerHTML = "<p> No listings found that matth the criteria! </p>";
+        container.innerHTML = "<p>No listings found that matth the criteria!</p>";
     } else {
         listings.forEach(listing => {
             const card = document.createElement("div");
             card.className = "listing-card";
-            card.innerHTML = 
+            card.innerHTML = /**note the comments!!!!!!!! || נועד להצגת מידע לדירה שנמצאה בחיפוש**/
             `
                 <h3>${listing.name}</h3>
                 <p>${listing.d}</p>
@@ -26,28 +66,6 @@
 
             container.appendChild(card);
         });
-    }
-   }
-
-// כפתור התנתקות, הפנייה ללוגין במידה ולא מחובר
-   function signOut() {
-    localStorage.removeItem("currentUser");
-    window.location.href = "login.html";
-   }
-
-    if (!localStorage.getItem("currentUser")) {
-        const page = window.location.pathname;
-    if (!page.includes("login") && !page.includes("register")) {
-     window.location.href = "login.html";
-    }        
-   }
-
-   window.onload = function () {
-    const userName = localStorage.getItem("currentUser");
-    if (!userName) {
-        window.location.href = "login.html";
-    } else {
-        document.getElementById("userName").textContent = `Hi, ${userName}`;
     }
    }
 
