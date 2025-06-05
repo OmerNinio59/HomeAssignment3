@@ -12,15 +12,15 @@
         listings.forEach(listing => {
             const card = document.createElement("div");
             card.className = "listing-card";
-            card.innerHTML = /**note the comments!!!!!!!! || נועד להצגת מידע לדירה שנמצאה בחיפוש**/
+            card.innerHTML = 
             `
                 <h3>${listing.name}</h3>
                 <p>${listing.d}</p>
-                <img src="${/***listing picture url add later***/}" alt="${listing.name}"/> 
+                <img src="${listing.rooms}" alt="${listing.name}"/> 
                 <p>Price: ${listing.price}</p>
                 <p>Score: ${listing.score}</p>
                 <p>Rooms: ${listing.rooms}</p>
-                <a href="${/***listing url add later***/}" class="btn">View Listings</a>
+                <a href="${listing.rooms}" class="btn">View Listings</a>
                 <button class="btn" onclick="addToFavorites(${listing.listing_id})">Add to favorites</button>
             `;
 
@@ -28,7 +28,6 @@
         });
     }
    }
-
 
 // כפתור התנתקות, הפנייה ללוגין במידה ולא מחובר
    function signOut() {
@@ -51,7 +50,6 @@
         document.getElementById("userName").textContent = `Hi, ${userName}`;
     }
    }
-
 
    // ערכים לסינון דירות
    document.querySelector(".btn").addEventListener("click", function() {
