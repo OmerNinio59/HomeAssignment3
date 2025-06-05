@@ -1,61 +1,144 @@
+/* ✅ home.css – עיצוב לדף הבית והדירות */
 
-  .main-section {
-    padding: 40px 20px;
-    display: grid;
-    place-items: center;
-    gap: 40px;
-  }
+.main-section {
+  padding: 40px 20px;
+  display: grid;
+  place-items: center;
+  gap: 40px;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  max-width: 1400px;
+  width: 100%;
+  max-height: 1200px;
+  height: 100%;
+  background-color: var(--white-color); 
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.intro-text {
+  padding: 40px;
+  display: grid;
+  gap: 20px; 
+  align-content: center; 
+}
+
+.intro-text h1 {
+  font-size: 2.5rem;
+}
+
+.intro-text p {
+  font-size: 1.1rem;
+}
+
+.btn {
+  background-color: var(--primary-color); 
+  color: var(--white-color); 
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-hover); 
+  color: var(--primary-color); 
+}
+
+@media (max-width: 767px) {
   .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    max-width: 1400px;
-    width: 100%;
-    max-height: 1200px;
-    height:100%;
-    background-color: var(--white-color); 
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    
-  }
-  .intro-text {
-    padding: 40px;
-    display: grid;
-    gap: 20px; 
-    align-content: center; 
+    grid-template-columns: 1fr; 
   }
 
-  .intro-text h1 {
-    font-size: 2.5rem;
+  .listing-grid {
+    grid-template-columns: 1fr !important;
   }
-  
-  .intro-text p {
-    font-size: 1.1rem;
-  }
-  
-  .btn {
-    background-color: var(--primary-color); 
-    color:var(--white-color); 
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: var(--primary-color-hover); 
-    color:var(--primary-color); 
-  }
+}
 
-    .intro-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  @media (max-width: 767px) {
-    .intro-grid {
-      grid-template-columns: 1fr; 
-    }
-  }
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* שלוש כרטיסיות בשורה */
+  gap: 24px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.listing-card {
+  background-color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.listing-card:hover {
+  transform: scale(1.02);
+}
+
+.listing-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.listing-info {
+  flex-grow: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.listing-table td {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.listing-description {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+   border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.listing-description li {
+   font-size: 0.9rem;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.listing-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column; /* כפתורים אחד מעל השני */
+  gap: 10px;
+  align-items: stretch;
+}
+
+.listing-actions button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  transition: background-color 0.3s ease;
+}
+
+.listing-actions button:hover {
+  background-color: var(--primary-color-hover);
+}

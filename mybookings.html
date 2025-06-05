@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>My Booking</title>
     <link rel="icon" href="images/icon.ico" type="image/x-icon" />
      <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/mybookings.css" />
@@ -13,12 +13,12 @@
     <header class="site-header">
       <nav class="navbar">
         <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
-        <a id="userName">hi, "user Name"</a><br>
-        <a href="login.html">Sign Out</a>
+     <a id="userName"></a><br/>
+     <a id="signOut" href="#">Sign Out</a>
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
           <li><a href="favorites.html">Favorites</a></li>
-          <li class="active"><a href="mybookings.html">My Booking</a></li>
+          <li class="active"><a href="mybookings.html">My Bookings</a></li>
           <li><a href="rent.html">Rent</a></li>
         </ul>
       </nav>
@@ -29,9 +29,23 @@
        <div class="intro-text">
           <h1>My Booking</h1>
       </section>
+        
+    <h2>My Bookings</h2>
+    <div id="bookingsContainer"></div>
+  </main>
+
+  <script src="js/data/amsterdam.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/bookings.js"></script>
 
     <footer class="footer">
       <p>© 2025 Lidor&Omer&Tali. All rights reserved.</p>
     </footer>
+
+
+   <script src="js/data/amsterdam.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/bookings.js"></script>
+
   </body>
 </html>

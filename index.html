@@ -1,29 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Home</title>
     <link rel="icon" href="images/icon.ico" type="image/x-icon" />
-    <script src="js/data/amsterdam.js" defer></script>
-     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/home.css" />
-    <script>
-      console.log(amsterdam);
-    </script>
+    <script src="js/data/amsterdam.js" defer></script>
   </head>
-  
+
   <body>
     <header class="site-header">
       <nav class="navbar">
         <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
-        <a id="userName">hi, "user Name"</a><br>
-        <a href="login.html" onclick="signOut()">Sign Out</a>
+        <a id="userName"></a><br />
+        <a id="signOut" href="#">Sign Out</a>
         <ul class="nav-menu" id="navMenu">
           <li class="active"><a href="index.html">Home</a></li>
           <li><a href="favorites.html">Favorites</a></li>
-          <li><a href="rent.html">My Booking</a></li>
-          <li><a href="mybookings.html">Rent</a></li>
+          <li><a href="mybookings.html">My Bookings</a></li>
+          <li><a href="rent.html">Rent</a></li>
         </ul>
       </nav>
     </header>
@@ -35,20 +33,38 @@
         </div>
 
         <div class="login-box">
-          <h3>Fill your Preferrences </h3>
-          <input class="fill-detail" type="text" id="scoreChoice" placeholder="min score" />
-          <input class="fill-detail" type="text" id="minPrice" placeholder="min price" />
-          <input class="fill-detail" type="text" id="maxPrice" placeholder="max price" />
-          <input class="fill-detail" type="text" id="roomNumber" placeholder="number of rooms" />
-          <a class="btn" >filter</a> 
+          <h3>Fill your Preferences</h3>
+          <form id="filterForm">
+            <input class="fill-detail" type="number" id="minRating" placeholder="Min Rating" min="0" max="5" step="0.1" />
+            <input class="fill-detail" type="number" id="minPrice" placeholder="Min Price" />
+            <input class="fill-detail" type="number" id="maxPrice" placeholder="Max Price" />
+            <select class="fill-detail" id="roomCount">
+              <option value="">All Rooms</option>
+              <option value="1">1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+              <option value="4">4+ Rooms</option>
+            </select>
+            <button class="btn" type="submit">Filter</button>
+          </form>
         </div>
       </section>
 
+      <!-- אזור להצגת הדירות -->
+      <section id="listingContainer" class="listing-grid">
+        <!-- דירות ייווצרו כאן דינמית -->
+      </section>
       <div id="listings-container"></div>
     </main>
 
     <footer class="footer">
-      <p>© 2025 Lidor&Omer&Tali. All rights reserved.</p>
+      <p>© 2025 Lidor & Omer & Tali. All rights reserved.</p>
     </footer>
+
+    <!-- סקריפטים -->
+    <script src="js/storage.js"></script>
+   <script src="js/listing.js"></script>
   </body>
 </html>
+
+
