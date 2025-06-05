@@ -27,4 +27,28 @@ function checkAvailability(listingId, startDate, endDate) {
   //      - חיפוש הזמנות עם listingId זה
   //      - שימוש ב-isDateRangeOverlap להשוואה בין טווחים
   // להחזיר false אם יש חפיפה, true אם פנוי
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    if (key.endsWith('_bookings')) {
+      const bookings = JSON.parse(localStorage.getItem(key));
+
+      for (const booking of bookings) {
+        if (booking.listingId === listingId) {
+          const overlap = isDateRangeOverlap(
+            startDate,
+            endDate,
+            booking.startDate,
+           booking.endDate
+          );
+          if (overlap) {
+            return false;
+          }
+        }
+      }
+    }
+  }
+
+  return true;
 }

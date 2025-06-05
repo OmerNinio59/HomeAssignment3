@@ -34,7 +34,23 @@
         <div class="intro-text">
           <h1>Rent</h1>
       </section>
-    </main>
+
+      <form id="payment">
+        <h3>Payment Details</h3>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required />
+
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" maxlength="16" required />
+
+        <label for="expiry">Expiration Date:</label>
+        <input type="month" id="expiry" required />
+
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" maxlength="3" required />
+      
+        <button type="submit">PAY</button>
+      </form>
 
       <footer class="footer">
         <p>© 2025 Lidor&Omer&Tali. All rights reserved.</p>
