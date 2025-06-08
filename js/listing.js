@@ -1,8 +1,62 @@
 // שליפת דירות, סינון, חיפוש
 
 document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector(".intro-grid");
+
+  // יצירת הטופס הדינמי
+  const loginBox = document.createElement("div");
+  loginBox.className = "login-box";
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Fill your Preferences";
+  loginBox.appendChild(heading);
+
+  const form = document.createElement("form");
+  form.id = "filterForm";
+
+  const minRating = document.createElement("input");
+  minRating.type = "number";
+  minRating.className = "fill-detail";
+  minRating.id = "minRating";
+  minRating.placeholder = "Min Rating";
+  minRating.min = "0";
+  minRating.max = "5";
+  minRating.step = "0.1";
+  form.appendChild(minRating);
+
+  const minPrice = document.createElement("input");
+  minPrice.type = "number";
+  minPrice.className = "fill-detail";
+  minPrice.id = "minPrice";
+  minPrice.placeholder = "Min Price";
+  form.appendChild(minPrice);
+
+  const maxPrice = document.createElement("input");
+  maxPrice.type = "number";
+  maxPrice.className = "fill-detail";
+  maxPrice.id = "maxPrice";
+  maxPrice.placeholder = "Max Price";
+  form.appendChild(maxPrice);
+
+  const minRooms = document.createElement("input");
+  minRooms.type = "number";
+  minRooms.className = "fill-detail";
+  minRooms.id = "minRooms";
+  minRooms.placeholder = "Number of Rooms";
+  minRooms.min = "1";
+  form.appendChild(minRooms);
+
+  const filterBtn = document.createElement("button");
+  filterBtn.className = "btn";
+  filterBtn.type = "submit";
+  filterBtn.textContent = "Filter";
+  form.appendChild(filterBtn);
+
+  loginBox.appendChild(form);
+  section.appendChild(loginBox);
+
+  // לאחר יצירת הטופס – ממשיכים לשאר הקוד
   const container = document.getElementById("listingContainer");
-  const form = document.getElementById("filterForm");
   const currentUser = localStorage.getItem("currentUser");
   const favKey = `${currentUser}_favorites`;
   let favorites = JSON.parse(localStorage.getItem(favKey)) || [];
@@ -60,14 +114,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const minRating = parseFloat(document.getElementById("minRating").value) || 0;
     const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
     const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
-    const roomCount = document.getElementById("roomCount").value;
+    const minRooms = parseInt(document.getElementById("minRooms").value) || 0;
 
     return amsterdam.filter(listing => {
-      const price = listing.price || 0;
-      const rating = Number(listing.review_scores_rating) || 0;
-      const rooms = listing.bedrooms;
-      const roomMatch = roomCount === "" || rooms == roomCount || (roomCount === "4" && rooms >= 4);
-      return price >= minPrice && price <= maxPrice && rating >= minRating && roomMatch;
+      const price = parseFloat((listing.price || "0").replace(/[^\d.]/g, "")) || 0;
+      const rating = parseFloat(listing.review_scores_rating) || 0;
+      const rooms = Number(listing.bedrooms) || 0;
+      const roomMatch = rooms >= minRooms;
+
+      return price >= minPrice &&
+             price <= maxPrice &&
+             rating >= minRating &&
+             roomMatch;
     });
   }
 
@@ -80,4 +138,3 @@ document.addEventListener("DOMContentLoaded", function () {
     renderListings(filteredData);
   });
 });
-
