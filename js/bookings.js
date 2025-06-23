@@ -47,4 +47,3 @@ function cancelBooking(index) {
     }
   }
 }
-
