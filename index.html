@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,30 +30,13 @@
         <div class="intro-text">
           <h1>Home</h1>
         </div>
-
-        <div class="login-box">
-          <h3>Fill your Preferences</h3>
-          <form id="filterForm">
-            <input class="fill-detail" type="number" id="minRating" placeholder="Min Rating" min="0" max="5" step="0.1" />
-            <input class="fill-detail" type="number" id="minPrice" placeholder="Min Price" />
-            <input class="fill-detail" type="number" id="maxPrice" placeholder="Max Price" />
-            <select class="fill-detail" id="roomCount">
-              <option value="">All Rooms</option>
-              <option value="1">1 Room</option>
-              <option value="2">2 Rooms</option>
-              <option value="3">3 Rooms</option>
-              <option value="4">4+ Rooms</option> 
-            </select>
-            <button class="btn" type="submit">Filter</button>
-          </form>
-        </div>
       </section>
 
       <!-- אזור להצגת הדירות -->
       <section id="listingContainer" class="listing-grid">
         <!-- דירות ייווצרו כאן דינמית -->
       </section>
-      <div id="listings-container"></div>
+
     </main>
 
     <footer class="footer">
@@ -63,7 +45,8 @@
 
     <!-- סקריפטים -->
     <script src="js/storage.js"></script>
-   <script src="js/listing.js"></script>
+    <script src="js/listing.js"></script>
+    <script src="js/utils.js"></script>
   </body>
 </html>
 

@@ -75,3 +75,28 @@
   margin: 5px ;
 }
 
+@media (max-width: 767px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    max-height: none;
+  }
+
+  .intro-text {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .intro-text h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .fill-detail {
+    font-size: 0.95rem;
+    height: 40px;
+  }
+}
