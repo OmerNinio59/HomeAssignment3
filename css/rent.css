@@ -14,8 +14,11 @@ body {
     gap: 40px;
   }
 
+
   .intro-grid {
     display: grid;
+    grid-template-columns: 1fr;
+    max-width: 500px;
     grid-template-columns: 1fr;
     max-width: 500px;
     width: 100%;
@@ -28,8 +31,10 @@ body {
     
   }
 
+
   .intro-text {
     padding: 40px;
+    /* display: grid; */
     /* display: grid; */
     gap: 20px; 
     align-content: center; 

@@ -9,8 +9,8 @@
 
 .intro-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 1400px;
+  grid-template-columns: 1fr;
+  max-width: 250px;
   width: 100%;
   max-height: 1200px;
   height: 100%;
@@ -24,7 +24,7 @@
   padding: 40px;
   display: grid;
   gap: 20px;
-  align-content: center;
+  place-content: center;
 }
 
 .intro-text h1 {
@@ -63,7 +63,7 @@
   }
 }
 
-/* ✅ עיצוב לרשימת דירות */
+/*  עיצוב לרשימת דירות */
 
 .listing-grid {
   display: grid;
