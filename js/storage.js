@@ -39,5 +39,3 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("userName").textContent = `Hi, ${userName}`;
     }
    }
-   
-
