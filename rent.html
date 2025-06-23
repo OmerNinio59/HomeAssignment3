@@ -27,35 +27,55 @@
         </ul>
        </nav>
     </header>
-
-    <main class="main-section">
+    <main>
       <section class="intro-grid">
         <div class="intro-text">
           <h1>Rent</h1>
-          <form id="payment">
-            <h3>Payment Details</h3>
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" required />
 
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" maxlength="16" required />
+          <div id="listingDetails"></div>
 
-            <label for="expiry">Expiration Date:</label>
-            <input type="month" id="expiry" required />
+          <div class="booking-section">
+            <form id="dateForm">
+              <h3>Select Your Stay</h3>
+              <label for="startDate">Start Date:</label>
+              <input type="date" id="startDate" required />
 
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" maxlength="3" required />
-          
-            <button type="submit">PAY</button>
-          </form>
+              <label for="endDate">End Date:</label>
+              <input type="date" id="endDate" required />
+
+              <button type="submit">Check Availability</button>
+            </form>
+
+            <div id="paymentWrapper" class="hidden">
+              <form id="payment">
+                <h3>Payment Details</h3>
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" required />
+
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" maxlength="16" required />
+
+                <label for="expiry">Expiration Date:</label>
+                <input type="month" id="expiry" required />
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" maxlength="3" required />
+
+                <button type="submit">PAY</button>
+              </form>
+            </div>
+          </div>
+
+          <div id="availabilityResult"></div>
         </div>
       </section>
 
       <footer class="footer">
-        <p>© 2025 Lidor&Omer&Tali. All rights reserved.</p>
+        <p>© 2025 Lidor & Omer & Tali. All rights reserved.</p>
       </footer>
       <script src="js/storage.js"></script>
       <script src="js/utils.js"></script>
       <script src="js/rent.js"></script>
+    </main>
   </body>
 </html>
