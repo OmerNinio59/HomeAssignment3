@@ -1,4 +1,4 @@
-
+/* /* 
   .main-section {
     padding: 40px 20px;
     display: grid;
@@ -50,7 +50,6 @@
   }
 
 
-  /* סגנון כללי */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -68,7 +67,7 @@ h2 {
   color: #333;
 }
 
-/* כרטיס הזמנה */
+
 .booking-card {
   display: flex;
   flex-direction: row;
@@ -119,7 +118,7 @@ h2 {
   background-color: #c0392b;
 }
 
-/* רספונסיביות */
+
 @media (max-width: 768px) {
   .booking-card {
     flex-direction: column;
@@ -128,5 +127,114 @@ h2 {
   .booking-card img {
     width: 100%;
     height: 200px;
+  }
+}  */
+
+
+/* סגנון כללי */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* כרטיס הזמנה */
+.booking-card {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: scale(1.01);
+}
+
+.booking-card img {
+  width: 200px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-card div {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booking-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.booking-card p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.booking-card button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: fit-content;
+  align-self: start;
+}
+
+.booking-card button:hover {
+  background-color: #c0392b;
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+  .booking-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .booking-card div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .booking-card button {
+    align-self: center;
   }
 }
