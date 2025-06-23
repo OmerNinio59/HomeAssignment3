@@ -8,9 +8,6 @@
  * @returns {boolean} - האם יש חפיפה בין הטווחים
  */
 
-function isDateRangeOverlap(start1, end1, start2, end2) {
-  return !(end1 < start2 || start1 > end2);
-}
 
 /**
  * בודק האם הטווח שהתבקש פנוי להשכרה בדירה מסוימת.
@@ -29,79 +26,142 @@ function isDateRangeOverlap(start1, end1, start2, end2) {
   //      - שימוש ב-isDateRangeOverlap להשוואה בין טווחים
   // להחזיר false אם יש חפיפה, true אם פנוי
 
+
+
+function isDateRangeOverlap(start1, end1, start2, end2) {
+  return !(end1 < start2 || start1 > end2);
+}
+
 function checkAvailability(listingId, startDate, endDate) {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-
     if (key.endsWith('_bookings')) {
       const bookings = JSON.parse(localStorage.getItem(key));
-
       for (const booking of bookings) {
         if (booking.listingId === listingId) {
-          const overlap = isDateRangeOverlap(
-            startDate,
-            endDate,
-            booking.startDate,
-           booking.endDate
-          );
-          if (overlap) {
+          if (isDateRangeOverlap(startDate, endDate, booking.startDate, booking.endDate)) {
             return false;
           }
         }
       }
     }
   }
-
   return true;
 }
 
-const params = new URLSearchParams(window.location.search);
-const listingId = params.get("id");
-const listing = amsterdam.find(item => item.listing_id == listingId);
+document.addEventListener("DOMContentLoaded", () => {
+  const main = document.querySelector("main");
+  main.innerHTML = "";
 
-if (!listing) {
-  document.querySelector(".main-section").innerHTML = "<p>Listing not found.</p>";
-} else {
-  const listingDetails = document.getElementById("listingDetails");
-  listingDetails.innerHTML = `
-    <img class="listing-image" src="${listing.picture_url}" alt="${listing.name}" />
-    <p>${listing.description || "No description available."}</p>
-  `;
-}
+  const section = document.createElement("section");
+  section.className = "intro-grid";
 
-window.addEventListener("DOMContentLoaded", () => {
-  const availabilityResult = document.getElementById("availabilityResult");
-  const paymentWrapper = document.getElementById("paymentWrapper");
-  const dateForm = document.getElementById("dateForm");
+  const container = document.createElement("div");
+  container.className = "intro-text";
 
-  if (paymentWrapper) {
-    paymentWrapper.classList.add("hidden");
+  const title = document.createElement("h1");
+  title.textContent = "Rent";
+
+  const layout = document.createElement("div");
+  layout.className = "rent-layout"; // יוגדר ב־CSS
+
+  const leftPanel = document.createElement("div");
+  leftPanel.className = "left-panel";
+
+  const rightPanel = document.createElement("div");
+  rightPanel.className = "right-panel";
+
+  container.appendChild(title);
+  container.appendChild(layout);
+  section.appendChild(container);
+  main.appendChild(section);
+
+  // שליפת פרטי הדירה
+  const params = new URLSearchParams(window.location.search);
+  const listingId = params.get("id");
+  const listing = amsterdam.find(item => item.listing_id == listingId);
+  if (!listing) {
+    leftPanel.innerHTML = "<p>You should choose an apartment first(;.</p>";
+    layout.appendChild(leftPanel);
+    return;
   }
+
+  // קוביית הדירה (תמונה + תיאור)
+  const card = document.createElement("div");
+  card.className = "listing-card";
+  card.innerHTML = `
+    <img class="listing-image" src="${listing.picture_url}" alt="${listing.name}" />
+    <div class="listing-info">
+      <h2>${listing.name}</h2>
+      <p>${listing.description || "No description available."}</p>
+    </div>
+  `;
+  leftPanel.appendChild(card);
+
+  // טופס תאריכים
+  const dateForm = document.createElement("form");
+  dateForm.id = "dateForm";
+  dateForm.innerHTML = `
+    <h3>Select Your Stay</h3>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" required />
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" required />
+    <div id="availabilityResult"></div>
+    <button type="submit">Check Availability</button>
+  `;
+  const dateFormWrapper = document.createElement("div");
+  dateFormWrapper.className = "date-picker";
+  dateFormWrapper.appendChild(dateForm);
+
+  // טופס תשלום
+  const paymentWrapper = document.createElement("div");
+  paymentWrapper.id = "paymentWrapper";
+  paymentWrapper.className = "payment-form hidden";
+  paymentWrapper.innerHTML = `
+    <form id="payment">
+      <h3>Payment Details</h3>
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required />
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" maxlength="16" required />
+      <label for="expiry">Expiration Date:</label>
+      <input type="month" id="expiry" required />
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" maxlength="3" required />
+      <button type="submit">PAY</button>
+    </form>
+  `;
+
+  // שילוב בלייאאוט
+  layout.appendChild(leftPanel);
+  rightPanel.appendChild(dateFormWrapper);
+  rightPanel.appendChild(paymentWrapper);
+  layout.appendChild(rightPanel);
+
+  // לוגיקה: טופס תאריכים
+  const availabilityResultEl = dateForm.querySelector("#availabilityResult");
 
   dateForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
 
     if (!startDate || !endDate) {
-      availabilityResult.textContent = "Please select both start and end dates.";
-      availabilityResult.style.color = "red";
+      availabilityResultEl.textContent = "Please select both start and end dates.";
+      availabilityResultEl.style.color = "red";
+      paymentWrapper.classList.add("hidden");
       return;
     }
 
     const available = checkAvailability(listingId, startDate, endDate);
 
     if (available) {
-      const username = localStorage.getItem("loggedInUser");
+      // const username = localStorage.getItem("currentUser") || localStorage.getItem("loggedInUser");
+      const username = localStorage.getItem("currentUser");
       if (username) {
         const key = username + "_bookings";
-        const newBooking = {
-          listingId,
-          startDate,
-          endDate
-        };
-
+        const newBooking = { listingId, startDate, endDate };
         const existing = JSON.parse(localStorage.getItem(key)) || [];
 
         const isDuplicate = existing.some(b =>
@@ -111,8 +171,8 @@ window.addEventListener("DOMContentLoaded", () => {
         );
 
         if (isDuplicate) {
-          availabilityResult.textContent = "You already booked this apartment on these dates.";
-          availabilityResult.style.color = "orange";
+          availabilityResultEl.textContent = "You already booked this apartment on these dates.";
+          availabilityResultEl.style.color = "orange";
           paymentWrapper.classList.remove("hidden");
           return;
         }
@@ -121,13 +181,25 @@ window.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem(key, JSON.stringify(existing));
       }
 
-      availabilityResult.textContent = "Dates are available. You can now complete the payment.";
-      availabilityResult.style.color = "green";
+      availabilityResultEl.textContent = "Dates are available. You can now complete the payment.";
+      availabilityResultEl.style.color = "green";
       paymentWrapper.classList.remove("hidden");
     } else {
-      availabilityResult.textContent = "This apartment is already booked on these dates.";
-      availabilityResult.style.color = "red";
+      availabilityResultEl.textContent = "This apartment is already booked on these dates.";
+      availabilityResultEl.style.color = "red";
       paymentWrapper.classList.add("hidden");
+    }
+  });
+
+  // לוגיקה: תשלום
+  document.addEventListener("submit", function (e) {
+    if (e.target && e.target.id === "payment") {
+      e.preventDefault();
+      availabilityResultEl.textContent = "Payment successful! Redirecting to My Bookings...";
+      availabilityResultEl.style.color = "green";
+      setTimeout(() => {
+        window.location.href = "mybookings.html";
+      }, 2000);
     }
   });
 });
