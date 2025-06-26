@@ -1,4 +1,4 @@
-/* /* /* *body {
+body {
   font-family: var(--font-family);
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -65,8 +65,8 @@
   margin-bottom: 10px;
 }
 
-/* טופס תאריכים וטופס תשלום */
-/* #dateForm,
+
+ #dateForm,
 #paymentWrapper form {
   display: grid;
   gap: 15px;
@@ -164,30 +164,30 @@ body {
   font-size: 1.1rem;
 }
 
-/* גריד של כל העמוד: דירה משמאל, תאריכים+תשלום מימין */
+
 .rent-layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   align-items: start;
   width: 100%;
 }
 
-/* טור שמאל */
+
 .left-panel {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* טור ימין */
+
 .right-panel {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* כרטיס דירה */
+
 .listing-card {
   background-color: #ffffff;
   padding: 20px;
@@ -211,7 +211,7 @@ body {
   line-height: 1.6;
 }
 
-/* קוביות תאריכים ותשלום */
+
 .date-picker,
 .payment-form {
   width: 100%;
@@ -281,4 +281,93 @@ body {
 
 .hidden {
   display: none;
+}
+
+
+
+@media (max-width: 480px) {
+   .rent-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* padding: 0 16px; */
+    /* gap: 20px; */
+    width: 100%;
+  }
+
+
+  .listing-card {
+    width: 100%;
+    box-shadow: none;
+    /* padding: 16px; */
+    box-sizing: border-box;
+  }
+
+  .listing-card img.listing-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .intro-grid {
+  /* padding: 40px; */
+  display: grid;
+  place-items: center;
+  /* gap: 40px; */
+}
+
+.intro-text {
+  /* padding: 40px;
+  gap: 20px; */
+  align-content: center;
+}
+
+  .intro-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+  }
+
+  .left-panel {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  /* gap: 30px; */
+}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+   .rent-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .intro-text h1 {
+    font-size: 2rem;
+  }
+
+  .intro-text p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rent-layout {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+@media (min-width: 1441px) {
+  .intro-text h1 {
+    font-size: 3rem;
+  }
 }
