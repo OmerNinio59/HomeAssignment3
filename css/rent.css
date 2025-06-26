@@ -1,3 +1,5 @@
+
+
 body {
   font-family: var(--font-family);
   background-color: var(--secondary-color);
@@ -5,220 +7,68 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  
 }
 
 .intro-grid {
   padding: 40px;
   display: grid;
   place-items: center;
-  gap: 40px;
-}
-
-.intro-text {
-  padding: 40px;
-  gap: 20px;
-  align-content: center;
-}
-
-.intro-text h1 {
-  font-size: 2.5rem;
-}
-
-.intro-text p {
-  font-size: 1.1rem;
-}
-
-#listingDetails {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-
-* .listing-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 30px;
-  align-items: start;
-  width: 100%;
-}
-
-.listing-image {
-  max-width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-}
-
-.listing-info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.listing-description h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-
- #dateForm,
-#paymentWrapper form {
-  display: grid;
-  gap: 15px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  max-width: 100%;
-  width: 100%;
-}
-
-#dateForm h3,
-#paymentWrapper h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
-
-#dateForm input,
-#paymentWrapper input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#dateForm label,
-#paymentWrapper label {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #333;
-}
-
-#availabilityResult {
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 1rem;
-  color: #444;
-}
-
-#dateForm button,
-#paymentWrapper button[type="submit"] {
-  margin-top: 10px;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#dateForm button:hover,
-#paymentWrapper button[type="submit"]:hover {
-  background-color: white;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-
-.hidden {
-  display: none;
-}     */
-
-
-body {
-  font-family: var(--font-family);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-.intro-grid {
-  padding: 40px;
-  display: grid;
-  place-items: center;
-  gap: 40px;
 }
 
 .intro-text {
-  padding: 40px;
-  gap: 20px;
-  align-content: center;
+  text-align: center;
 }
 
 .intro-text h1 {
   font-size: 2.5rem;
 }
-
-.intro-text p {
-  font-size: 1.1rem;
-}
-
 
 .rent-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
-  align-items: start;
   width: 100%;
+  place-items: center;
+  text-align: center;
 }
 
-
-.left-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-
+.left-panel,
 .right-panel {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  text-align: center;
 }
 
-
 .listing-card {
-  background-color: #ffffff;
+  background-color: var(--white-color);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.listing-card img.listing-image {
+.listing-card img {
   width: 100%;
   border-radius: 12px;
   margin-bottom: 15px;
+  object-fit: cover;
 }
 
-.listing-card .listing-info h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.listing-card .listing-info p {
+.listing-info p {
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
 
-.date-picker,
-.payment-form {
-  width: 100%;
+
+.listing-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
-#dateForm,
-#paymentWrapper form {
+form {
   display: grid;
   gap: 15px;
   padding: 20px;
@@ -228,39 +78,27 @@ body {
   width: 100%;
 }
 
-#dateForm h3,
-#paymentWrapper h3 {
+form h3 {
   margin-bottom: 10px;
   font-size: 1.5rem;
   color: var(--primary-color);
 }
 
-#dateForm input,
-#paymentWrapper input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#dateForm label,
-#paymentWrapper label {
+form label {
   font-weight: bold;
   font-size: 1rem;
   color: #333;
 }
 
-#availabilityResult {
-  margin-top: 10px;
-  font-weight: bold;
+form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 1rem;
-  color: #444;
+  box-sizing: border-box;
 }
 
-#dateForm button,
-#paymentWrapper button[type="submit"] {
+form button {
   margin-top: 10px;
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -272,102 +110,63 @@ body {
   transition: background-color 0.3s ease;
 }
 
-#dateForm button:hover,
-#paymentWrapper button[type="submit"]:hover {
+form button:hover {
   background-color: white;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
+}
+
+#availabilityResult {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #444;
 }
 
 .hidden {
   display: none;
 }
 
-
+/* רספונסיביות */
 
 @media (max-width: 480px) {
-   .rent-layout {
-    display: grid;
+  .rent-layout {
     grid-template-columns: 1fr;
-    /* padding: 0 16px; */
-    /* gap: 20px; */
-    width: 100%;
   }
-
-
-  .listing-card {
-    width: 100%;
-    box-shadow: none;
-    /* padding: 16px; */
-    box-sizing: border-box;
-  }
-
-  .listing-card img.listing-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .intro-grid {
-  /* padding: 40px; */
-  display: grid;
-  place-items: center;
-  /* gap: 40px; */
-}
-
-.intro-text {
-  /* padding: 40px;
-  gap: 20px; */
-  align-content: center;
-}
 
   .intro-text h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
-  .intro-text p {
-    font-size: 1rem;
+  .listing-card img {
+    height: auto;
   }
 
-  .left-panel {
-  display: flex;
-  flex-direction: column;
-  /* gap: 20px; */
-}
+  .left-panel,
+  .right-panel {
+    gap: 20px;
+  }
 
-
-.right-panel {
-  display: flex;
-  flex-direction: column;
-  /* gap: 30px; */
-}
+  form button {
+    font-size: 0.95rem;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-   .rent-layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-
-  .intro-text h1 {
-    font-size: 2rem;
-  }
-
-  .intro-text p {
-    font-size: 1.05rem;
+  .rent-layout {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .rent-layout {
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1.5fr;
   }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 1024px) {
   .intro-text h1 {
     font-size: 3rem;
   }
+  
 }
