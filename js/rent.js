@@ -133,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </form>
   `;
 
-  // שילוב בלייאאוט
   layout.appendChild(leftPanel);
   rightPanel.appendChild(dateFormWrapper);
   rightPanel.appendChild(paymentWrapper);
@@ -157,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const available = checkAvailability(listingId, startDate, endDate);
 
     if (available) {
-      // const username = localStorage.getItem("currentUser") || localStorage.getItem("loggedInUser");
+
       const username = localStorage.getItem("currentUser");
       if (username) {
         const key = username + "_bookings";

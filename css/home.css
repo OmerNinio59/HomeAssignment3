@@ -52,17 +52,6 @@
 }
 
 
-
-@media (max-width: 767px) {
-  .intro-grid {
-    grid-template-columns: 1fr; 
-  }
-
-  .listing-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 .listing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 

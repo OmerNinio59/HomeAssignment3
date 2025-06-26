@@ -1,6 +1,5 @@
 // ניהול מועדפים לפי currentUser
 
-// ✅ favorites.js – הצגת דירות מועדפות
 
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("favoritesContainer");
