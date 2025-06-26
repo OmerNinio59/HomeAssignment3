@@ -1,4 +1,4 @@
-/* ✅ home.css – עיצוב לדף הבית והדירות */
+
 
 .main-section {
   padding: 40px 20px;
@@ -65,7 +65,7 @@
 
 .listing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* שלוש כרטיסיות בשורה */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 24px;
   max-width: 1400px;
   width: 100%;
@@ -126,7 +126,7 @@
 .listing-actions {
   margin-top: auto;
   display: flex;
-  flex-direction: column; /* כפתורים אחד מעל השני */
+  flex-direction: column; 
   gap: 10px;
   align-items: stretch;
 }
@@ -143,4 +143,46 @@
 
 .listing-actions button:hover {
   background-color: var(--primary-color-hover);
+}
+
+@media (max-width: 480px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .listing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .intro-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .listing-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .listing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1441px) {
+  .intro-text h1 {
+    font-size: 3rem;
+  }
+
+  .listing-grid {
+    max-width: 1600px;
+  }
 }

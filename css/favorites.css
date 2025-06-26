@@ -17,7 +17,7 @@ h2 {
   color: #333;
 }
 
-/* גריד להצגת הדירות */
+
 .listing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -27,7 +27,6 @@ h2 {
   margin: 0 auto;
 }
 
-/* כרטיס דירה */
 .listing-card {
   background-color: var(--white-color);
   border-radius: 12px;
@@ -66,7 +65,6 @@ h2 {
   margin: 0.25rem 0;
 }
 
-/* אזור כפתורים */
 .listing-actions {
   margin-top: auto;
   display: flex;
@@ -90,9 +88,40 @@ h2 {
   background-color: var(--primary-color-hover);
 }
 
-/* רספונסיביות */
+
 @media (max-width: 768px) {
   .listing-card img {
     height: 160px;
   }
 }
+
+@media (max-width: 480px) {
+  .listing-card img {
+    height: 140px;
+  }
+
+  .listing-info h3 {
+    font-size: 1rem;
+  }
+
+  .listing-actions button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .listing-card img {
+    height: 160px;
+  }
+
+    main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .booking-card {
+    max-width: 100%;
+  }
+}
+

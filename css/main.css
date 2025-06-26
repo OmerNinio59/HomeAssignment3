@@ -1,19 +1,19 @@
 html {scroll-behavior: smooth;}
 
 :root {
-  --primary-color: #1E3A8A; /* צבע ראשי */
-  --secondary-color: #F6F8FA; /* צבע משני */
-  --bold-color: #386bbc; /* צבע דגש */
-  --text-color: #333; /* צבע טקסט */
-  --nav-color:#032150; /* צבע רקע */
-  --footer-color: #032150; /* צבע רגל */
- --white-color: #ffffff; /* צבע לבן */
- --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* משפחת גופנים */
---dark-background: #121212; /* צבע רקע כהה */
---dark-text-color: #e0e0e0; /* צבע טקסט כהה */
---dark-secondary-background: #737373; /* צבע משני כהה */
---border-curve: 12px; /* רדיוס פינות */
---border-light-curve: 8px; /* רדיוס פינות ימניות */
+  --primary-color: #1E3A8A; 
+  --secondary-color: #F6F8FA; 
+  --bold-color: #386bbc; 
+  --text-color: #333; 
+  --nav-color:#032150; 
+  --footer-color: #032150; 
+ --white-color: #ffffff; 
+ --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+--dark-background: #121212; 
+--dark-text-color: #e0e0e0; 
+--dark-secondary-background: #737373; 
+--border-curve: 12px; 
+--border-light-curve: 8px; 
 }
 
 * {
